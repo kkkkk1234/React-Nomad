@@ -1,0 +1,79 @@
+<!-- 수업방식 바닐라 js와 reactjs를 비교함으로써 reactjs를 왜 사용하는지 배운다 -->
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <span></span>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- react를 선언했기 때문에 creatElement function을 가진 React Object에 접근할 수 있다. 괄호 안에 적는 것은 만들고자 하는 html태그와 똑같은 이름이어야한다.  -->
+    <div id="root"></div>
+  </body>
+
+  <script type="text/babel">
+    const root = document.getElementById("root"); //root라는 이름을 가진 element를 끌어왔다.
+    let counter = 0;
+
+    function CountUp() {
+      counter = counter + 1;
+      render();
+    }
+
+    function render() {
+      ReactDOM.render(<Container />, root);
+    }
+
+    const Container = () => (
+      <div>
+        <h3>Total clicks : {counter}</h3>
+        <button onClick={CountUp}>Click me</button>
+      </div>
+    );
+
+    const Button = () => (
+      <button
+        style={{ backgroundColor: "tomato" }}
+        onClick={() => console.log("This is a tomato")}
+      >
+        Click me
+      </button>
+    );
+
+    function Title() {
+      return (
+        <h3 id="title" onMouseEnter={() => console.log("mouse entered")}>
+          Im a title
+        </h3>
+      );
+    }
+    render();
+  </script>
+</html>
+
+<!-- 
+//    리엑트DOM 사용법 ex) -> ReactDOM.render(놓을 태그, 태그를 놓을 위치) 
+//   -->
+
+<!-- react js에서는 가상의 DOM을 만들어서 실행한다. 실제의 html을 건드리지 않는다. -->
+
+<!--
+//    createElement(생성할 태그, property, content)
+//    -->
+
+<!-- 
+//     span태그는 div태그처럼 특별한 기능을 갖고있지 않고, css와 함께 쓰인다.
+//     div태그와의 차이점은 display속성이 block이 아닌, inline이라.
+//     div -> block속성
+//     span -> inline속성
+//   -->
+
+<!-- 
+//     ReactJS를 설치하기 위해서는 두 개의 Js코드를 import해야한다.
+//     1. react 2. react-dom
+//    -->
+
+<!-- // How to use Rendering with JSX
+//    // const btn = React.createElement("button",
+//    // {onClick: () => console.log("im clicked")},
+//    //  "Click me"); -->
